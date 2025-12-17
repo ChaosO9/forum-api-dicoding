@@ -1,6 +1,7 @@
 const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
 const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
 const CommentsTableTestHelper = require('../../../../tests/CommentsTableTestHelper');
+const LikesTableTestHelper = require('../../../../tests/LikesTableTestHelper');
 const AddComment = require('../../../Domains/comments/entities/AddComment');
 const AddedComment = require('../../../Domains/comments/entities/AddedComment');
 const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
@@ -238,6 +239,11 @@ describe('CommentRepositoryPostgres', () => {
       await UsersTableTestHelper.addUser(userPayload);
       await ThreadsTableTestHelper.createNewThread(threadPayload);
       await CommentsTableTestHelper.addCommentOnThread(commentPayload);
+      await LikesTableTestHelper.addLike({
+        id: 'like-111',
+        owner: userPayload.id,
+        commentId: commentPayload.id,
+      });
 
       const comments = await commentRepositoryPostgres.getCommentsByThreadId(
         threadPayload.id,
@@ -250,6 +256,7 @@ describe('CommentRepositoryPostgres', () => {
       expect(comments[0].content).toEqual('lorem ipsum dolor sit amet');
       expect(comments[0].deletedAt).toBeDefined();
       expect(comments[0].date).toBeDefined();
+      expect(comments[0].likeCount).toEqual(1);
     });
   });
 });

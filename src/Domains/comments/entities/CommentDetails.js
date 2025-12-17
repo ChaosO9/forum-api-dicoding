@@ -9,6 +9,7 @@ class CommentDetails {
       id: comment.id,
       username: comment.username,
       date: comment.date,
+      likeCount: comment.likeCount,
       content: comment.deletedAt
         ? '**komentar telah dihapus**'
         : comment.content,

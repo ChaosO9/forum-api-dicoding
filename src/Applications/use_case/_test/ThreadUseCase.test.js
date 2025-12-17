@@ -79,6 +79,7 @@ describe('ThreadUseCase', () => {
         date: '2025-08-08T07:22:33.555Z',
         content: 'lorem ipsum dolor sit amet',
         deletedAt: '',
+        likeCount: 0,
       },
       {
         id: 'comment-222',
@@ -87,6 +88,7 @@ describe('ThreadUseCase', () => {
         date: '2025-08-08T07:26:21.338Z',
         content: 'deleted',
         deletedAt: '2025-08-08T09:23:30.756Z',
+        likeCount: 0,
       },
     ];
 
@@ -175,6 +177,7 @@ describe('ThreadUseCase', () => {
               },
             ],
             content: 'lorem ipsum dolor sit amet',
+            likeCount: 0,
           },
           {
             id: 'comment-222',
@@ -182,6 +185,7 @@ describe('ThreadUseCase', () => {
             date: '2025-08-08T07:26:21.338Z',
             replies: [],
             content: '**komentar telah dihapus**',
+            likeCount: 0,
           },
         ],
       },
