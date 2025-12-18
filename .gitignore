@@ -4,3 +4,9 @@ package-lock.json
 config/database/test.json
 coverage
 .env
+*.pub
+id_ed25519
+nginx.conf.bak
+nginx.conf
+*.zip
+*.postman_collection.json
